@@ -10,7 +10,7 @@ def get_ip():
     response = requests.get("https://api64.ipify.org?format=json").json()
     return response["ip"]
 
-# https://geo.ipify.org/api/v2/country,city?apiKey=at_e0yBCBsSU41iggglWomB8BGVz80rK&ipAddress=8.8.8.8
+
 def get_location():
     ip_address = get_ip()
     response = requests.get(f"https://ipapi.co/{ip_address}/json/").json()
