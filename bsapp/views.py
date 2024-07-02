@@ -11,7 +11,10 @@ class Hello(APIView):
         visitor_name = request.GET.get("visitor_name", "Guest")
 
         # Fetch location based on client's IP address
-        ip_response = requests.get("http://ip-api.com/json/")
+        ip_response = requests.get(
+            "http://ip-api.com/json/",
+            params={"query": request.META.get("REMOTE_ADDR", "127.0.0.1")},
+        )
         ip_data = ip_response.json()
 
         if ip_response.status_code == 200 and ip_data["status"] == "success":
